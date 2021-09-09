@@ -1,0 +1,26 @@
+{
+  "name": "projeto-final-blue-modulo3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaioDariva/Projeto-Final-Blue-Modulo3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaioDariva/Projeto-Final-Blue-Modulo3/issues"
+  },
+  "homepage": "https://github.com/CaioDariva/Projeto-Final-Blue-Modulo3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
