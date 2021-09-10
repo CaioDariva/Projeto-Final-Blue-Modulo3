@@ -17,7 +17,7 @@ const getById = async (req, res) => {
     try {
         const livro = await Livro.findById(id);
         if (!livro){
-            res.status(404).send({message = "Livro não encontrado"});
+            res.status(404).send({message: "Livro não encontrado"});
             return;
         };
         return res.send({livro});
@@ -84,5 +84,5 @@ module.exports = {
     getById,
     create,
     update,
-    del
+    del,
 };
