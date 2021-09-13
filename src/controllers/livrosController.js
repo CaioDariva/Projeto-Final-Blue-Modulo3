@@ -4,9 +4,13 @@ const Livro = require("../models/Livro");
 const getAll = async (req, res) => {
     try {
         const livros = await Livro.find();
+        if (livros.length === 0)
+        return res
+          .status(404)
+          .send({ message: "Não existem livros cadastrados!" });
         return res.send({ livros });
     } catch (err) {
-        res.status(500).send({error: err});
+        res.status(500).send({error: err.mesage});
     };
 };
 
@@ -45,7 +49,7 @@ const create = async (req,res) => {
         await novoLivro.save();
         return res.status(201).send({msg: "Livro criado com sucesso", novoLivro});
     } catch (err) {
-        res.status(500).send({error: err});
+        res.status(500).send({error: err.mesage});
     };
 };
 
@@ -57,25 +61,25 @@ const update = async (req, res) => {
         return;
     };    
 
-    res.livro.titulo = titulo
-    res.livro.autor = autor
-    res.livro.resumo = resumo
+    res.livro.titulo = titulo;
+    res.livro.autor = autor;
+    res.livro.resumo = resumo;
 
     try {
         await res.livro.save();
-        res.send({message: "Livro alterado com sucesso!"})
+        res.send({message: "Livro alterado com sucesso!"});
     } catch (err){
-        res.status(500).send({error: err});
-    }
+        res.status(500).send({error: err.mesage});
+    };
 
 };
 
 const del = async (req, res) => {
     try {
-        await res.livro.remove()
-        return res.send({mesage: "Livro removido com sucesso."})
+        await res.livro.remove();
+        return res.send({mesage: "Livro removido com sucesso."});
     } catch (err) {
-        res.status(500).send({error: err});
+        res.status(500).send({error: err.message});
     };
 };
 

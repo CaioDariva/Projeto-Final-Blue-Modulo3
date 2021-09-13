@@ -1,6 +1,4 @@
-const { Router } = require("express");
-const express = require("express");
-const routes = express.Router();
+const routes = require("express").Router();
 
 const LivrosController = require("../controllers/livrosController");
 const LivroMiddlewares = require("../middlewares/livroMiddlewares");
@@ -11,4 +9,4 @@ routes.post("/livros", LivrosController.create);
 routes.put("/livro/:id", LivroMiddlewares.validaId, LivrosController.update);
 routes.delete("livro/:id", LivroMiddlewares.validaId, LivrosController.del);
 
-module.exports = routes
+module.exports = routes;

@@ -22,4 +22,4 @@ const validaId = async (req, res, next) => {
     next();
 };
 
-module.exports = { validaId }
+module.exports = { validaId };
