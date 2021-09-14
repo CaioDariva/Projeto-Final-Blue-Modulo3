@@ -13,6 +13,10 @@ const livroSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    imgUrl:{
+        type: String,
+        require: true,
+    }
 });
 
 module.exports = mongoose.model("Livro", livroSchema);

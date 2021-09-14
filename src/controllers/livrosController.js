@@ -14,7 +14,6 @@ const getAll = async (req, res) => {
     };
 };
 
-
 const getById = async (req, res) => {
     const { id } = req.params;
 
@@ -30,11 +29,10 @@ const getById = async (req, res) => {
     };
 };
 
-
 const create = async (req,res) => {
-    const {titulo, autor, resumo} = req.body;
+    const {titulo, autor, resumo, imgUrl} = req.body;
 
-    if (!titulo || !autor || !resumo) {
+    if (!titulo || !autor || !resumo || !imgUrl) {
         res.status(400).send({mesage: "Você não preencheu todos os campos necessários."});
         return;
     };
@@ -43,6 +41,7 @@ const create = async (req,res) => {
         titulo, 
         autor, 
         resumo,
+        imgUrl,
     });
 
     try {
@@ -54,9 +53,9 @@ const create = async (req,res) => {
 };
 
 const update = async (req, res) => {
-    const {titulo, autor, resumo} = req.body;
+    const {titulo, autor, resumo, imgUrl} = req.body;
 
-    if (!titulo || !autor || !resumo) {
+    if (!titulo || !autor || !resumo || !imgUrl) {
         res.status(400).send({mesage: "Você não preencheu todos os campos necessários."});
         return;
     };    
@@ -64,6 +63,7 @@ const update = async (req, res) => {
     res.livro.titulo = titulo;
     res.livro.autor = autor;
     res.livro.resumo = resumo;
+    res.livro.imgUrl = imgUrl;
 
     try {
         await res.livro.save();
@@ -91,7 +91,10 @@ const filterByTitle = async  (req, res) => {
         return;
     };
     try {
-        const livros = await Livro.find({"titulo": {'$regex': `${titulo}`} });
+        const livros = await Livro.find({"titulo": {'$regex': `${titulo}`, $options: 'i'} });
+        if(livros.length === 0) {
+            res.status(404).send({ mesage: "Título não encontrado"});
+        };
         return res.send({livros});
     } catch (err) {
         return res.status(500).send({ error: err.mesage });
@@ -129,7 +132,10 @@ const filterByAuthor = async  (req, res) => {
         return;
     };
     try {
-        const livros = await Livro.find({"autor": {'$regex': `${autor}`} });
+        const livros = await Livro.find({"autor": {'$regex': `${autor}`, $options: 'i'} });
+        if(livros.length === 0) {
+            res.status(404).send({ mesage: "Autor não encontrado"});
+        };
         return res.send({livros});
     } catch (err) {
         return res.status(500).send({ error: err.mesage });
