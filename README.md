@@ -12,10 +12,11 @@
 3. Possuir ao menos uma Middleware;
 4. Possuir o CRUD completo;
 5. Utilizar .env para dados sensíveis e Possuir um arquivo .gitignore específico para nodejs;
-6. O projeto deve ser versionado no GitHub e Possuir um README.md explicando o porque do seu projeto e mostrando como o executar; Implemente o cors em suas rotas;
-7. Implemente uma rota de filtro, para buscar todos os atribudos do seu document de forma opcional, via Query Params;
-8. É necessário realizar o deploy do seu projeto no Heroku;
-9. Utilizar o Mongo Atlas para o armazenar o banco em nuvem.
+6. O projeto deve ser versionado no GitHub e Possuir um README.md explicando o porque do seu projeto e mostrando como o executar;
+7. Implemente o cors em suas rotas;
+8. Implemente uma rota de filtro, para buscar todos os atribudos do seu document de forma opcional, via Query Params;
+9. É necessário realizar o deploy do seu projeto no Heroku;
+10. Utilizar o Mongo Atlas para o armazenar o banco em nuvem.
 
 ## Executando o Projeto
 Essa API utiliza o mongodb como banco de dados e o mongoose como ODM, então antes de testar a API certifique se você possui o MongoDb instalado em seu computador(https://www.mongodb.com/try/download/community).

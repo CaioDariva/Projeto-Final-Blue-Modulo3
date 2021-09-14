@@ -83,10 +83,66 @@ const del = async (req, res) => {
     }
 };
 
+const filterByTitle = async  (req, res) => {
+    const titulo = req.query.titulo;
+    
+    if(!titulo) {
+        res.status(400).send({ err: "Parâmetro não recebido" });
+        return;
+    };
+    try {
+        const livros = await Livro.find({"titulo": {'$regex': `${titulo}`} });
+        return res.send({livros});
+    } catch (err) {
+        return res.status(500).send({ error: err.mesage });
+    };
+};
+
+const filterAll = async (req, res) => {
+    let { titulo, autor } = req.query;
+
+    !titulo ? (titulo = "") : (titulo = titulo);
+    !autor ? (autor = "") : (autor = autor);
+
+    try {
+        const livros = await Livro.find({
+            "titulo": {'$regex': `${titulo}`, $options: 'i'}, 
+            "autor": {'$regex': `${autor}`, $options: 'i'} 
+        });
+
+        if(livros.length === 0) {
+            res.status(404).send({ err: "Livro não encontrado." });
+        return;
+        };
+
+        return res.send({ livros });
+    } catch (err) {
+        return res.status(500).send({ error: err.mesage });
+    };
+};
+
+const filterByAuthor = async  (req, res) => {
+    const autor = req.query.autor;
+    
+    if(!autor) {
+        res.status(400).send({ err: "Parâmetro não recebido" });
+        return;
+    };
+    try {
+        const livros = await Livro.find({"autor": {'$regex': `${autor}`} });
+        return res.send({livros});
+    } catch (err) {
+        return res.status(500).send({ error: err.mesage });
+    };
+};
+
 module.exports = {
     getAll,
     getById,
     create,
     update,
     del,
+    filterByTitle,
+    filterAll,
+    filterByAuthor
 };

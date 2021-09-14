@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const livroSchema = new mongoose.Schema({
     titulo:{
         type: String,
-        require: true
+        require: true,
     },
     autor:{
         type: String,
-        require: true
+        require: true,
     },
     resumo:{
         type: String,
-        require: true
+        require: true,
     },
 });
 
