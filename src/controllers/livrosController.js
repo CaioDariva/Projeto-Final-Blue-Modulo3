@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
 
 
 const getById = async (req, res) => {
-    const { id } = req.params.id
+    const { id } = req.params;
 
     try {
         const livro = await Livro.findById(id);
@@ -80,7 +80,7 @@ const del = async (req, res) => {
         return res.send({mesage: "Livro removido com sucesso."});
     } catch (err) {
         res.status(500).send({error: err.message});
-    };
+    }
 };
 
 module.exports = {
