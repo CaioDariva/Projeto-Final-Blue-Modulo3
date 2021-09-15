@@ -38,11 +38,15 @@ Além disso, você precisa criar o arquivo .env com a url do seu banco, utilize 
 ### Exemplos de URLs:
 * Essa é a URL de teste padrão: http://localhost:3000/livros
 * Para buscar por ID, Editar ou Apagar, insira o ID na URL: http://localhost:3000/livros/"ID"
-* Para fazer uma busca com query string, esse é um exemplo de URL: http://localhost:3000/livros/filter?titulo=Codigo-Limpo
+* Para fazer uma busca com query string, esse é um exemplo de URL: http://localhost:3000/livros/filter?titulo=Codigo&autor=bob
 
 ### Essa é a estrutura JSON para fazer o POST e o PUT:
     {
         "titulo": "Codigo Limpo",
         "identidade": "Robert Cecil Martin",
-        "resumo": "Código limpo está divido em três partes. Na primeira há diversos capítulos que descrevem os princípios, padrões e práticas para criar um código limpo. A segunda parte consiste em diversos casos de estudo de complexidade cada vez maior. Cada um é um exercício para limpar um código – transformar o código base que possui alguns problemas em um melhor e eficiente. A terceira parte é a compensação: um único capítulo com uma lista de heurísticas e "odores" reunidos durante a criação dos estudos de caso. O resultado será um conhecimento base que descreve a forma como pensamos quando criamos, lemos e limpamos um código."
+        "resumo": "Código limpo está divido em três partes. Na primeira há diversos capítulos que descrevem os princípios, padrões e práticas para criar um código limpo. A segunda parte consiste em diversos casos de estudo de complexidade cada vez maior. Cada um é um exercício para limpar um código – transformar o código base que possui alguns problemas em um melhor e eficiente. A terceira parte é a compensação: um único capítulo com uma lista de heurísticas e "odores" reunidos durante a criação dos estudos de caso. O resultado será um conhecimento base que descreve a forma como pensamos quando criamos, lemos e limpamos um código.",
+        "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/4153E2zZmTS._SX350_BO1,204,203,200_.jpg"
     }
+
+### O deploy desse projeto está em:
+https://api-proj-final-mod-3.herokuapp.com/livros
